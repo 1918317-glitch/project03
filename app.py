@@ -53,6 +53,10 @@ if submit:
     # 사용자 메시지
     input_messages.append({"role": "user", "content": transcript.text})
 
+    # 음성인식 결과 출력
+    st.subheader("내 음성인식 결과")
+    st.write(transcript.text)
+
     # LLM 호출 및 응답 듣기
     with st.spinner("답변을 준비하고 있습니다..."):
         # LLM 호출
