@@ -69,3 +69,15 @@ if submit:
         # 응답 출력
         st.subheader("AI 답변")
         st.write(answer)
+        # AI 답변 음성 출력 (TTS)
+st.subheader("AI 음성 답변")
+
+with st.spinner("음성을 생성하고 있습니다..."):
+    speech = client.audio.speech.create(
+        model="gpt-4o-mini-tts",
+        voice="alloy",
+        input=answer[:4096],
+        response_format="mp3"
+    )
+
+st.audio(speech.content, format="audio/mpeg")
